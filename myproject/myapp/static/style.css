@@ -5,3 +5,35 @@
 }
 
 
+:root {
+    --primary-green: #1a8917;
+    --hover-green: #156912;
+}
+.nav-link:hover {
+    color: var(--primary-green) !important;
+}
+.btn-primary {
+    background-color: var(--primary-green) !important;
+    border-color: var(--primary-green) !important;
+}
+.btn-primary:hover {
+    background-color: var(--hover-green) !important;
+    border-color: var(--hover-green) !important;
+}
+.btn-outline-dark:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: black !important;
+}
+.article-meta {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.topic-tag {
+    background-color: #f2f2f2;
+    border-radius: 100px;
+    padding: 8px 16px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 14px;
+}

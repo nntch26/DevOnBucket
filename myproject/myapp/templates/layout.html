@@ -32,6 +32,40 @@
 <body>
 
     {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container-fluid px-4">
+            <a href="">DevOnBucket</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">For you</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Following</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Web Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">AI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Python Programming</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-dark me-2">Sign in</button>
+                    <button class="btn btn-primary">Write</button>
+                </div>
+            </div>
+        </div>
+    </nav>
    
     {% endblock navbar%}
 
