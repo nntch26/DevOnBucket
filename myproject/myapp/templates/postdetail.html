@@ -75,14 +75,21 @@
                     <div class="d-flex align-items-center">
                         <strong class="me-2">{{ i.user }}</strong>
                         <small class="text-muted">{{ i.created_at|timesince }}</small>
+                        {% if i.user.id == user.id %}
+                        <form action="{% url 'create_comment' post.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete" value="{{i.id}}">
+                            <button style="border: none; background: none; color: red; padding: 0; cursor: pointer; padding-left: 30px;">Delete</button>
+                        </form>
+                        {% endif %}
                     </div>
                     <p class="mb-2" style="overflow-wrap: break-word; white-space: normal; max-width: 90%;">{{ i.description }}</p>
-                    <!-- <pre class="bg-light p-2 rounded">nums = [3, 5, 4, 2, 5, 2, 8, 9, 1]
-n = size(nums)
-res = goto * nums[pos]</pre> -->
                 </div>
             </div>
+            {% empty %}
+            <h5>No comment</h5>
             {% endfor %}
+
         </div>
     </div>
 

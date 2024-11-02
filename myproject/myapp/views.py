@@ -102,7 +102,7 @@ class PostdetailView(LoginRequiredMixin, View):
         return render(request, self.template_name, context)
 
 class EditPostView(View):
-    template_name = "edit_post.html"  # Create a new template for editing
+    template_name = "edit_post.html"
 
     def get(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
@@ -134,6 +134,7 @@ class CreateCommentView(LoginRequiredMixin, View):
         user = request.user
         post = Post.objects.get(id=post_id)
         text = request.POST.get("text")
+        delete = request.POST.get("delete")
         if text:
             Comment.objects.create(
                 user = user,
@@ -141,4 +142,8 @@ class CreateCommentView(LoginRequiredMixin, View):
                 description = text,
                 created_at = datetime.now()
             )
+        elif delete:
+            comment = Comment.objects.get(id = delete ,user = request.user)
+            comment.delete()
+
         return redirect('postdetail', post_id = post_id)
