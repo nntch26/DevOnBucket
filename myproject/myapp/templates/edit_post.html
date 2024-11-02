@@ -2,13 +2,13 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %} Create Post {% endblock title %}
+{% block title %} Edit Post {% endblock title %}
 
 {% block navbar %}
 <header class="header d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
         <a href="{% url 'index' %}" class="dev-logo me-3">DEVOnBUCKET</a>
-        <h5 class="mb-0">Create Post</h5>
+        <h5 class="mb-0">Edit Post</h5>
     </div>
     <div>
         <button class="btn btn-link text-dark">Edit</button>
@@ -28,7 +28,7 @@
                         {% csrf_token %}
                         {{ form.title|as_crispy_field }}
 
-                        {{ form.content}}
+                        {{ form.content|as_crispy_field }}
                         <hr>
                         {{ form.categories|as_crispy_field }}
 
@@ -49,7 +49,7 @@
     </div>
 
 
-      <!-- Modal เพิ่มข้อมูล-->
+    <!-- Modal เพิ่มข้อมูล-->
     <div class="modal fade" id="exampleModalnewCate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -63,7 +63,8 @@
                                         
                             <div class="form-group row mb-4">
                                 <div class="mb-3 col-12">
-                                    <input type="hidden" name="redirect_from" value="create">
+                                    <input type="hidden" name="redirect_from" value="edit">
+                                    <input type="hidden" name="post_id" value="{{ post.pk }}">
                                     {{ form2.name }}
                                 </div>
 

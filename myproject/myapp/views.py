@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.views import View
@@ -78,15 +78,24 @@ class CreatepostView(LoginRequiredMixin, View):
 class CategoriesAddView(LoginRequiredMixin, View):
     template_name = "post.html"
     login_url = '/login/'
+
     def post(self, request):
         form = CategoriesForm(request.POST)
+        redirect_from = request.POST.get('redirect_from')  # ตรวจสอบจาก POST
+
         if form.is_valid():
             form.save()
-            return redirect('createpost')
-        form = PostForm()
+            if redirect_from == 'edit':
+                post_id = request.POST.get('post_id')  # รับ post_id จากฟอร์ม
+                return redirect('edit_post', pk=post_id)  # เปลี่ยนไปที่ edit_post
+            else:
+                return redirect('createpost')  # ถ้าเป็นจาก create ให้กลับไปที่ create
+
+        # หาก form ไม่ valid ให้แสดงฟอร์มใหม่
+        form_post = PostForm()
         form2 = CategoriesForm()
         context = {
-            "form": form,
+            "form": form_post,
             "form2": form2
         }
         return render(request, self.template_name, context)
@@ -100,6 +109,34 @@ class PostdetailView(LoginRequiredMixin, View):
         comment_count = comment.count()
         context = {'post':post, 'comment': comment, 'comment_count': comment_count}
         return render(request, self.template_name, context)
+
+class EditPostView(View):
+    template_name = "edit_post.html"
+
+    def get(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(instance=post)
+        form2 = CategoriesForm(instance=post)
+        # ดึงเฉพาะ categories ที่โพสต์นี้เลือกไว้
+        return render(request, self.template_name, {'form': form, 'post': post, 'form2':form2})
+
+    def post(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('postdetail', post_id=pk)
+        else:
+            print(form.errors)
+
+        return render(request, self.template_name, {'form': form, 'post': post})
+
+class DeletePostView(View):
+    def post(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        post.delete()
+        return redirect('index')
+    
 
 class CreateCommentView(LoginRequiredMixin, View):
     login_url = '/login/'
