@@ -72,4 +72,13 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('index')
-  
+
+
+
+class CreatepostView(View):
+    
+    template_name = "post.html"
+    def get(self, request):
+
+        return render(request, self.template_name)
+    
