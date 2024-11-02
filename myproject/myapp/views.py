@@ -125,7 +125,7 @@ class EditPostView(View):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('postdetail', post_id=pk)
         else:
             print(form.errors)
 
