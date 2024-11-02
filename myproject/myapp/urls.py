@@ -13,4 +13,6 @@ urlpatterns = [
 
     path("createpost/", views.CreatepostView.as_view(), name="createpost"),
 
+    path("postdetail/", views.PostdetailView.as_view(), name="postdetail"),
+
 ]

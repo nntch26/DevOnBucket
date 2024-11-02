@@ -81,4 +81,12 @@ class CreatepostView(View):
     def get(self, request):
 
         return render(request, self.template_name)
+
+
+class PostdetailView(View):
+    
+    template_name = "postdetail.html"
+    def get(self, request):
+
+        return render(request, self.template_name)
     

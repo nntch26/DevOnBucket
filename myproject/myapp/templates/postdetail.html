@@ -1,0 +1,99 @@
+{% extends 'layout.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Post-Detail Page {% endblock title %}
+
+{% block navbar %}
+<div class="container mt-4">
+    <div class="d-flex align-items-center mb-3">
+        <a href="{% url 'index' %}" class="text-decoration-none text-dark">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
+        <h5 class="mb-0 ms-3">Google Repeating questions</h5>
+    </div>
+</div>
+{% endblock navbar %}
+
+{% block content %}
+
+<body class="bg-light">
+    <div class="container mt-4">
+
+
+        <!-- Main post -->
+        <div class="comment-box p-3 mb-3">
+            <div class="d-flex mb-2">
+                <div class="avatar me-2">
+                    <i class="bi bi-person"></i>
+                </div>
+                <div>
+                    <div class="d-flex align-items-center">
+                        <strong class="me-2">My name is</strong>
+                        <small class="text-muted">2 days ago</small>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <p>Hi Guys,<br>
+                While I was going through past google questions from Naukude discuss below are some of the repeating questions I found.</p>
+                <p>1. As stone array is given.<br>
+                At some point in time basically, no stone jumping happens again.<br>
+                Example: A path is : {50,45} ; start at point 0 stone: path moving up to<br>
+                hit high stone at point best by a given word end {y = yesterday).</p>
+            </div>
+            <div class="border-top pt-2">
+                <span class="text-muted">Comments: 22</span>
+            </div>
+        </div>
+
+        <!-- Comment sorting options -->
+        <ul class="nav nav-pills mb-3">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Best</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Most Votes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Newest to Oldest</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Oldest to Newest</a>
+            </li>
+        </ul>
+
+        <!-- Comment input -->
+        <div class="comment-box p-3 mb-3">
+            <textarea class="form-control mb-2" rows="3" placeholder="Type comment here... Markdown is supported!"></textarea>
+            <div class="text-end">
+                <button class="btn btn-primary">Post</button>
+            </div>
+        </div>
+
+        <!-- Example comment -->
+        <div class="comment-box p-3">
+            <div class="d-flex mb-2">
+                <div class="avatar me-2">
+                    <i class="bi bi-person"></i>
+                </div>
+                <div>
+                    <div class="d-flex align-items-center">
+                        <strong class="me-2">My name is</strong>
+                        <small class="text-muted">2 days ago</small>
+                    </div>
+                    <p class="mb-2">TC O(N)<br>
+                    Optimized Space</p>
+                    <pre class="bg-light p-2 rounded">nums = [3, 5, 4, 2, 5, 2, 8, 9, 1]
+n = size(nums)
+res = goto * nums[pos]</pre>
+                    <div class="mt-2">
+                        <button class="btn btn-sm btn-outline-secondary me-2">Show 1 reply</button>
+                        <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
