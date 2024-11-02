@@ -14,10 +14,10 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'body', 'categories']
+        fields = ['title', 'content', 'categories']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'New post title here...'}),
-            'body': forms.Textarea(attrs={'placeholder': 'Write your post content here...'}),
+            'content': forms.Textarea(attrs={'placeholder': 'Write your post content here...'}),
         }
 
 

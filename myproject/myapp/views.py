@@ -80,7 +80,10 @@ class CreatepostView(View):
     def post(self, request):
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()  # บันทึกโพสต์
+            post = form.save(commit=False)  # สร้างโพสต์แต่ยังไม่บันทึกลงฐานข้อมูล
+            post.author = request.user       # ตั้งค่า author ให้เป็นผู้ใช้ที่ล็อกอินอยู่
+            post.save()
+            form.save()
             return redirect('index')  # เปลี่ยนไปยัง URL ที่ต้องการ
         return render(request, self.template_name, {'form': form})
 
