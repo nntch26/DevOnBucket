@@ -6,14 +6,14 @@ from django.db.models import F, Q, Count, Value as V, Avg, Max, Min
 from django.db.models.functions import Length, Upper, Concat
 from .models import *
 
-from .forms import * 
+from .forms import PostForm 
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, SetPasswordForm
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import datetime
 
-# from .forms import CustomUserCreationForm  
+from .forms import CustomUserCreationForm  
 
 
 class indexView(View):
@@ -56,12 +56,7 @@ class RegisterView(View):
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
-            user1 = form.save()
-
-            UserDetail.objects.create(
-                user = user1, #ยัด obj user เข้าไป
-                phone_number = form.cleaned_data['phone_number']
-            )
+            form.save()
             return redirect('login')
         
         return render(request, 'register.html', {"form": form})
@@ -77,11 +72,18 @@ class LogoutView(View):
 
 
 class CreatepostView(View):
-    
     template_name = "post.html"
-    def get(self, request):
 
-        return render(request, self.template_name)
+    def get(self, request):
+        form = PostForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()  # บันทึกโพสต์
+            return redirect('index')  # เปลี่ยนไปยัง URL ที่ต้องการ
+        return render(request, self.template_name, {'form': form})
 
 
 class PostdetailView(View):

@@ -73,7 +73,6 @@
         color: #000;
         padding: 0.8rem;
         width: 100%;
-        margin-top: 1.5rem;
         border-radius: 4px;
     }
     .register-btn:hover {
@@ -91,54 +90,47 @@
 
 
 {% block navbar %}
-<div class="logo-area">
-    <h5>Logo</h5>
-</div>
-
+   <div class="logo-area">
+        <h4>
+            <a href="{% url 'index' %}" class="text-logo me-3"><i class="bi bi-arrow-left"></i>
+                DEVOnBUCKET
+            </a>
+        </h4>
+    </div>
 {% endblock navbar%}
+
 
 {% block content %} 
 
     <div class="registration-card">
         <h4 class="mb-4">Registration</h4>
-        <form>
-            <div class="input-group">
-                <i class="far fa-user"></i>
-                <input type="text" class="form-control" placeholder="Enter your name" required>
-            </div>
-            
-            <div class="input-group">
-                <i class="far fa-envelope"></i>
-                <input type="email" class="form-control" placeholder="Enter your email" required>
-            </div>
-            
-            <div class="input-group password-field">
-                <i class="fas fa-lock"></i>
-                <input type="password" class="form-control" placeholder="Create a password" required>
-                <button type="button" class="password-toggle">
-                    <i class="far fa-eye"></i>
-                </button>
-            </div>
-            
-            <div class="input-group password-field">
-                <i class="fas fa-lock"></i>
-                <input type="password" class="form-control" placeholder="Confirm a password" required>
-                <button type="button" class="password-toggle">
-                    <i class="far fa-eye"></i>
-                </button>
-            </div>
 
-            <div class="form-check mb-4">
-                <input type="checkbox" class="form-check-input" id="terms" required>
-                <label class="form-check-label" for="terms">I accept all terms & conditions</label>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                {{ form.username|as_crispy_field }}
+            </div>
+            
+            <div class="input-group">
+                {{ form.email|as_crispy_field }}
+            </div>
+            
+            <div class="input-group password-field">
+                {{ form.password1|as_crispy_field }}
+            </div>
+            
+            <div class="input-group password-field">
+                {{ form.password2|as_crispy_field }}
             </div>
 
             <button type="submit" class="register-btn">Register Now</button>
 
             <div class="text-center mt-4">
                 <span class="text-muted small">Already have an account? </span>
-                <a href="#" class="login-link small">Login now</a>
+                <a href="{% url 'login' %}" class="login-link small">Login now</a>
             </div>
+
         </form>
     </div>
 
