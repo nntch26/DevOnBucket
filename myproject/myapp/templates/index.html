@@ -56,13 +56,9 @@
 
                     <h4 class="mb-3">Recommended topics</h4>
                     <div class="mb-4">
-                        <a href="#" class="topic-tag text-decoration-none text-dark">Self Improvement</a>
-                        <a href="#" class="topic-tag text-decoration-none text-dark">Cryptocurrency</a>
-                        <a href="#" class="topic-tag text-decoration-none text-dark">Writing</a>
-                        <a href="#" class="topic-tag text-decoration-none text-dark">Politics</a>
-                        <a href="#" class="topic-tag text-decoration-none text-dark">Relationships</a>
-                        <a href="#" class="topic-tag text-decoration-none text-dark">Productivity</a>
-                        <a href="#" class="topic-tag text-decoration-none text-dark">Money</a>
+                        {% for cat in categories %}
+                            <a href="#" class="topic-tag text-decoration-none text-dark">{{ cat.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

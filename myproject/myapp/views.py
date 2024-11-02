@@ -22,7 +22,8 @@ class indexView(View):
 
     def get(self, request):
         posts = Post.objects.all()
-        context = {'posts':posts}
+        categories = Category.objects.all()
+        context = {'posts':posts, 'categories':categories}
         return render(request, self.template_name, context)
     
 
