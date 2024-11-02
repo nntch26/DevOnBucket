@@ -38,7 +38,7 @@
                 <p>{{post.content}}</p>
             </div>
             <div class="border-top pt-2">
-                <span class="text-muted">Comments: 22</span>
+                <span class="text-muted">Comments: {{comment_count}}</span>
             </div>
         </div>
 
@@ -55,22 +55,23 @@
 
         <!-- Example comment -->
         <div class="comment-box p-3 mb-5">
+            {% for i in comment %}
             <div class="d-flex mb-2">
-                <div class="avatar me-2">
+                <div class="avatar me-2" style="flex: 0 0 auto;">
                     <i class="bi bi-person"></i>
                 </div>
-                <div>
+                <div style="flex: 1; max-width: 100%;">
                     <div class="d-flex align-items-center">
-                        <strong class="me-2">My name is</strong>
-                        <small class="text-muted">2 days ago</small>
+                        <strong class="me-2">{{ i.user }}</strong>
+                        <small class="text-muted">{{ i.created_at|timesince }}</small>
                     </div>
-                    <p class="mb-2">TC O(N)<br>
-                    Optimized Space</p>
-                    <pre class="bg-light p-2 rounded">nums = [3, 5, 4, 2, 5, 2, 8, 9, 1]
+                    <p class="mb-2" style="overflow-wrap: break-word; white-space: normal; max-width: 90%;">{{ i.description }}</p>
+                    <!-- <pre class="bg-light p-2 rounded">nums = [3, 5, 4, 2, 5, 2, 8, 9, 1]
 n = size(nums)
-res = goto * nums[pos]</pre>
+res = goto * nums[pos]</pre> -->
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 

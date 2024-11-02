@@ -92,11 +92,12 @@ class CreatepostView(View):
 
 
 class PostdetailView(View):
-    
     template_name = "postdetail.html"
     def get(self, request, post_id):
         post = Post.objects.get(pk=post_id)
-        context = {'post':post}
+        comment = Comment.objects.filter(post_id=post_id)
+        comment_count = comment.count()
+        context = {'post':post, 'comment': comment, 'comment_count': comment_count}
         return render(request, self.template_name, context)
     
 class CreateCommentView(View):
@@ -113,4 +114,5 @@ class CreateCommentView(View):
             )
 
         return redirect('postdetail', post_id = post_id)
+    
     
