@@ -43,6 +43,14 @@
     border-bottom: 1px solid #e9ecef;
     padding: 0.5rem 1rem;
 }
+
+.text-logo {
+    color: #2E373E;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .dev-logo {
     background-color: #2E373E;
     color: white;

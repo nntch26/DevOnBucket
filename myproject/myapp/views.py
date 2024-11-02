@@ -12,7 +12,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, SetP
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# from .forms import CustomUserCreationForm  
+from .forms import CustomUserCreationForm  
 
 
 class indexView(View):
@@ -55,12 +55,7 @@ class RegisterView(View):
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
-            user1 = form.save()
-
-            UserDetail.objects.create(
-                user = user1, #ยัด obj user เข้าไป
-                phone_number = form.cleaned_data['phone_number']
-            )
+            form.save()
             return redirect('login')
         
         return render(request, 'register.html', {"form": form})
