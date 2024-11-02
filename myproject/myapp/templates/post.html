@@ -24,18 +24,13 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="bg-white p-4 rounded shadow-sm">
-
-                    
                     <form method="post" id="postForm">
                         {% csrf_token %}
                         {{ form.title|as_crispy_field }}
 
                         {{ form.content|as_crispy_field }}
-
                         <hr>
                         {{ form.categories|as_crispy_field }}
-
-
 
                         <div class="mt-3">
                             <button type="submit" class="publish-btn">Publish</button>
