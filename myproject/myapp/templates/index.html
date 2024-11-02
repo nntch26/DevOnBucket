@@ -28,7 +28,7 @@
                         </a>
                         <p class="text-muted">{{ post.content|truncatewords:15 }}</p>  <!-- แสดงเนื้อหาโพสต์บางส่วน -->
                         <div class="article-meta d-flex align-items-center">
-                            <span>{{ post.created_at|date:"M d" }}</span>  <!-- แสดงวันที่สร้างโพสต์ -->
+                            <span>{{ post.created_at|date:"M d, Y \a\t H:i" }}</span><!-- แสดงวันที่สร้างโพสต์ -->
                             <span class="mx-2">·</span>
                             <span>{{ post.views }} views</span>  <!-- แสดงจำนวนการเข้าชม (คุณต้องเพิ่ม field นี้ใน model ถ้าต้องการ) -->
                             <span class="mx-2">·</span>
