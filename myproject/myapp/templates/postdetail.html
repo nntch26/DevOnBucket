@@ -29,18 +29,13 @@
                 </div>
                 <div>
                     <div class="d-flex align-items-center">
-                        <strong class="me-2">My name is</strong>
-                        <small class="text-muted">2 days ago</small>
+                        <strong class="me-2">{{ post.author }}</strong>
+                        <small class="text-muted">{{ post.updated_at }}</small>
                     </div>
                 </div>
             </div>
             <div class="mb-3">
-                <p>Hi Guys,<br>
-                While I was going through past google questions from Naukude discuss below are some of the repeating questions I found.</p>
-                <p>1. As stone array is given.<br>
-                At some point in time basically, no stone jumping happens again.<br>
-                Example: A path is : {50,45} ; start at point 0 stone: path moving up to<br>
-                hit high stone at point best by a given word end {y = yesterday).</p>
+                <p>{{post.content}}</p>
             </div>
             <div class="border-top pt-2">
                 <span class="text-muted">Comments: 22</span>

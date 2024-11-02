@@ -21,8 +21,9 @@ class indexView(View):
     template_name = "index.html"
 
     def get(self, request):
-       
-        return render(request, self.template_name)
+        posts = Post.objects.all()
+        context = {'posts':posts}
+        return render(request, self.template_name, context)
     
 
 # login & register
@@ -92,9 +93,10 @@ class CreatepostView(View):
 class PostdetailView(View):
     
     template_name = "postdetail.html"
-    def get(self, request):
-
-        return render(request, self.template_name)
+    def get(self, request, post_id):
+        post = Post.objects.get(pk=post_id)
+        context = {'post':post}
+        return render(request, self.template_name, context)
     
 class CreateCommentView(View):
     def post(self, request, post_id):
