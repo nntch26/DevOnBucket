@@ -11,6 +11,7 @@ from .forms import PostForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, SetPasswordForm
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import datetime
 
 from .forms import CustomUserCreationForm  
 
@@ -94,4 +95,19 @@ class PostdetailView(View):
     def get(self, request):
 
         return render(request, self.template_name)
+    
+class CreateCommentView(View):
+    def post(self, request, post_id):
+        user = request.user
+        post = Post.objects.get(id=post_id)
+        text = request.POST.get("text")
+        if text:
+            Comment.objects.create(
+                user = user,
+                post = post,
+                description = text,
+                created_at = datetime.now()
+            )
+
+        return redirect('index')
     
