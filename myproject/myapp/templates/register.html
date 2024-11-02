@@ -4,66 +4,144 @@
 
 {% block title %} Register {% endblock title %}
 
-{% block navbar %}
-    <div class="container mt-3">
-        <a class="navbar-brand " href="{% url 'login' %}">
-            <i class="bi bi-arrow-left-square ms-2"></i> 
-            <span> ย้อนกลับ</span>
-        </a>
-    </div>
 
+
+{% block styles %}
+<style>
+    body {
+        background-color: #e9ecef;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .registration-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+    .logo-area {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    .form-control {
+        border: none;
+        border-bottom: 1px solid #dee2e6;
+        border-radius: 0;
+        padding-left: 0;
+        padding-right: 30px;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #000;
+    }
+    .input-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+    .input-group i {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #6c757d;
+        z-index: 10;
+    }
+    .input-group .form-control {
+        padding-left: 25px;
+    }
+    .password-field {
+        position: relative;
+    }
+    .password-toggle {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+        color: #6c757d;
+        padding: 0;
+    }
+    .register-btn {
+        background-color: #e9ecef;
+        border: none;
+        color: #000;
+        padding: 0.8rem;
+        width: 100%;
+        margin-top: 1.5rem;
+        border-radius: 4px;
+    }
+    .register-btn:hover {
+        background-color: #dee2e6;
+    }
+    .login-link {
+        color: #000;
+        text-decoration: none;
+    }
+    .login-link:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock styles %}
+
+
+{% block navbar %}
+<div class="logo-area">
+    <h5>Logo</h5>
+</div>
 
 {% endblock navbar%}
 
 {% block content %} 
-<div class="container-2">
 
-    <div class="intro2 text-center">
-        <h1>สมัครสมาชิก</h1>
+    <div class="registration-card">
+        <h4 class="mb-4">Registration</h4>
+        <form>
+            <div class="input-group">
+                <i class="far fa-user"></i>
+                <input type="text" class="form-control" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="input-group">
+                <i class="far fa-envelope"></i>
+                <input type="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="input-group password-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" class="form-control" placeholder="Create a password" required>
+                <button type="button" class="password-toggle">
+                    <i class="far fa-eye"></i>
+                </button>
+            </div>
+            
+            <div class="input-group password-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" class="form-control" placeholder="Confirm a password" required>
+                <button type="button" class="password-toggle">
+                    <i class="far fa-eye"></i>
+                </button>
+            </div>
+
+            <div class="form-check mb-4">
+                <input type="checkbox" class="form-check-input" id="terms" required>
+                <label class="form-check-label" for="terms">I accept all terms & conditions</label>
+            </div>
+
+            <button type="submit" class="register-btn">Register Now</button>
+
+            <div class="text-center mt-4">
+                <span class="text-muted small">Already have an account? </span>
+                <a href="#" class="login-link small">Login now</a>
+            </div>
+        </form>
     </div>
 
-   
-    <div class="space-form"> 
-        <form action="{% url 'register' %}" method="post">
-            {% csrf_token %}
-
-            <div class="group">
-                <div class="info-box">
-                    {{ form.username|as_crispy_field }}
-                </div>
-                <div class="info-box">
-                    {{ form.phone_number|as_crispy_field }}
-                </div>
-            </div>
-            <div class="group">
-                <div class="info-box">
-                    {{ form.first_name|as_crispy_field }}
-                </div>
-                <div class="info-box">
-                    {{ form.last_name|as_crispy_field }}
-                </div>
-            </div>
-            <div class="info-box">
-                {{ form.email|as_crispy_field }}
-            </div>
-            <div class="group">
-                <div class="info-box">
-                    {{ form.password1|as_crispy_field }}
-                </div>
-                <div class="info-box">
-                    {{ form.password2|as_crispy_field }}
-                </div>
-            </div>
-
-            <div class="info-box2">
-                <button class="btn btn-cus2" style="width: 100%;">สมัครสมาชิก</button>
-                <p class="txt m-3">หากคุณมีบัญชีสมาชิกอยู่แล้ว? <a href="{% url 'login' %}">เข้าสู่ระบบ</a></p>
-            </div>
-            </form>
-    </div>
-   
-
-</div>
 
 {% endblock content %}
 
