@@ -7,24 +7,19 @@ class Category(models.Model):
     def __str__(self) -> str:
         return self.name
 
-class Blog(models.Model):
-    title = models.CharField(max_length=200)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    categories = models.ManyToManyField(Category)
-    
+
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    categories = models.ManyToManyField("Category", related_name="posts")
+
     def __str__(self):
-        return "{title} by {username}".format(title=self.title, username=self.author.username)
-    
-    def get_str_categories(self):
-        cate_list = self.categories.values_list("name", flat=True)
-        joined_string_comma = ', '.join(cate_list)
-        return joined_string_comma
-    
+        return self.title
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE )
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
