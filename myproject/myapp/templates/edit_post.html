@@ -49,7 +49,7 @@
     </div>
 
 
-      <!-- Modal เพิ่มข้อมูล-->
+    <!-- Modal เพิ่มข้อมูล-->
     <div class="modal fade" id="exampleModalnewCate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -63,7 +63,9 @@
                                         
                             <div class="form-group row mb-4">
                                 <div class="mb-3 col-12">
-                                    {{ form2.name|as_crispy_field }}
+                                    <input type="hidden" name="redirect_from" value="edit">
+                                    <input type="hidden" name="post_id" value="{{ post.pk }}">
+                                    {{ form2.name }}
                                 </div>
 
                             </div>
