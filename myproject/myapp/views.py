@@ -17,7 +17,6 @@ from .forms import CustomUserCreationForm
 
 
 class indexView(View):
-
     template_name = "index.html"
 
     def get(self, request):
@@ -26,44 +25,31 @@ class indexView(View):
         context = {'posts':posts, 'categories':categories}
         return render(request, self.template_name, context)
     
-
 # login & register
-
 class LoginView(View):
-
     template_name = "login.html"
-
     def get(self, request):
         form = AuthenticationForm()
         return render(request, self.template_name, {"form":form})
     
     def post(self, request):
         form = AuthenticationForm(request, data=request.POST)
-
         if form.is_valid():
             user = form.get_user()
             login(request, user)
             return redirect('index')
-        
         return render(request, self.template_name, {"form":form})
-    
 
 class RegisterView(View):
-    
     def get(self, request):
         form = CustomUserCreationForm()
         return render(request, 'register.html', {"form": form})
-    
     def post(self, request):
         form = CustomUserCreationForm(request.POST)
-
         if form.is_valid():
             form.save()
             return redirect('login')
-        
         return render(request, 'register.html', {"form": form})
-    
-
 
 class LogoutView(View):
     
@@ -71,11 +57,9 @@ class LogoutView(View):
         logout(request)
         return redirect('index')
 
-
-
-class CreatepostView(View):
+class CreatepostView(LoginRequiredMixin, View):
     template_name = "post.html"
-
+    login_url = '/login/'
     def get(self, request):
         form = PostForm()
         form2 = CategoriesForm()
@@ -91,17 +75,14 @@ class CreatepostView(View):
             return redirect('index')  # เปลี่ยนไปยัง URL ที่ต้องการ
         return render(request, self.template_name, {'form': form})
 
-
-class CategoriesAddView(View):
+class CategoriesAddView(LoginRequiredMixin, View):
     template_name = "post.html"
-
+    login_url = '/login/'
     def post(self, request):
         form = CategoriesForm(request.POST)
-
         if form.is_valid():
             form.save()
             return redirect('createpost')
-        
         form = PostForm()
         form2 = CategoriesForm()
         context = {
@@ -110,16 +91,18 @@ class CategoriesAddView(View):
         }
         return render(request, self.template_name, context)
 
-class PostdetailView(View):
+class PostdetailView(LoginRequiredMixin, View):
     template_name = "postdetail.html"
+    login_url = '/login/'
     def get(self, request, post_id):
         post = Post.objects.get(pk=post_id)
         comment = Comment.objects.filter(post_id=post_id)
         comment_count = comment.count()
         context = {'post':post, 'comment': comment, 'comment_count': comment_count}
         return render(request, self.template_name, context)
-    
-class CreateCommentView(View):
+
+class CreateCommentView(LoginRequiredMixin, View):
+    login_url = '/login/'
     def post(self, request, post_id):
         user = request.user
         post = Post.objects.get(id=post_id)
@@ -131,7 +114,4 @@ class CreateCommentView(View):
                 description = text,
                 created_at = datetime.now()
             )
-
         return redirect('postdetail', post_id = post_id)
-    
-    
