@@ -9,26 +9,25 @@ from django.utils import timezone
 from django.contrib.auth.forms import UserCreationForm
 
 from .models import Post
-
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class PostForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget(
+        attrs={'placeholder': 'Write your post content here...',
+                'class': 'content-area'}
+    ))
     class Meta:
         model = Post
         fields = ['title', 'content', 'categories']
-
         
         labels = {
             'title': 'Post Title',
-            'content': 'Content'  
+            'content': 'Content'
         }
 
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'New post title here...', 
                                             'class': 'title-input'}),
-
-            'content': forms.Textarea(attrs={'placeholder': 'Write your post content here...',
-                                             'class': 'content-area'}),
-
         }
 
 
