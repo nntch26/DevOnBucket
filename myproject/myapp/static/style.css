@@ -42,13 +42,13 @@
     color: #000;
 }
 
-.btn-primary {
+.btn-primarycus {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: #000;
 }
 
-.btn-primary:hover {
+.btn-primarycus:hover {
     background-color: var(--primary-hover);
     border-color: var(--primary-hover);
     color: #000;
@@ -81,6 +81,15 @@ textarea:focus {
 
 .highlight {
     color: var(--primary-color);
+}
+
+.titlecus{
+    color: #2d3748;
+    text-decoration: none;
+}
+
+.titlecus:hover{
+    color: var(--primary-hover);
 }
 
 
