@@ -53,3 +53,11 @@ class CustomUserCreationForm(UserCreationForm):
         ]
         
 
+# เพิ่มประเภทข้อมูล
+class CategoriesForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = [
+            "name"
+        ]
+

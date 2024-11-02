@@ -10,7 +10,7 @@
         <a href="{% url 'index' %}" class="text-decoration-none text-dark">
             <i class="bi bi-arrow-left"></i> Back
         </a>
-        <h5 class="mb-0 ms-3">Google Repeating questions</h5>
+        <h5 class="mb-0 ms-3">{{ post.title }}</h5>
     </div>
 </div>
 {% endblock navbar %}
@@ -48,7 +48,7 @@
                 {% csrf_token %}
                 <textarea class="form-control mb-2" name="text" rows="3" placeholder="Type comment here... Markdown is supported!"></textarea>
                 <div class="text-end">
-                    <button class="btn btn-primary">Post</button>
+                    <button class="btn btn-primarycus">Post</button>
                 </div>
             </form>
         </div>
