@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    color = models.CharField(max_length=10, default="#FFFFFF")
     
     def __str__(self) -> str:
         return self.name
@@ -23,3 +22,15 @@ class Blog(models.Model):
         cate_list = self.categories.values_list("name", flat=True)
         joined_string_comma = ', '.join(cate_list)
         return joined_string_comma
+    
+class Comment(models.Model):
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+    )
+    blog = models.ForeignKey(
+        Blog, 
+        on_delete=models.CASCADE
+    )
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
