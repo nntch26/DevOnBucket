@@ -6,7 +6,7 @@ from django.db.models import F, Q, Count, Value as V, Avg, Max, Min
 from django.db.models.functions import Length, Upper, Concat
 from .models import *
 
-from .forms import PostForm 
+from .forms import *
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, SetPasswordForm
 from django.contrib.auth import login, logout, update_session_auth_hash
@@ -78,7 +78,8 @@ class CreatepostView(View):
 
     def get(self, request):
         form = PostForm()
-        return render(request, self.template_name, {'form': form})
+        form2 = CategoriesForm()
+        return render(request, self.template_name, {'form': form, 'form2': form2})
 
     def post(self, request):
         form = PostForm(request.POST)
@@ -90,6 +91,24 @@ class CreatepostView(View):
             return redirect('index')  # เปลี่ยนไปยัง URL ที่ต้องการ
         return render(request, self.template_name, {'form': form})
 
+
+class CategoriesAddView(View):
+    template_name = "post.html"
+
+    def post(self, request):
+        form = CategoriesForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('createpost')
+        
+        form = PostForm()
+        form2 = CategoriesForm()
+        context = {
+            "form": form,
+            "form2": form2
+        }
+        return render(request, self.template_name, context)
 
 class PostdetailView(View):
     

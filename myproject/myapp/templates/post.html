@@ -32,7 +32,14 @@
                         <hr>
                         {{ form.categories|as_crispy_field }}
 
-                        <div class="mt-3">
+                        <div class="btnAdd ms-auto mb-3">
+                            <a href="" class="titlecus mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalnewCate">
+                                <i class="fs-5 bi bi-plus-circle-fill"></i><span class="ms-1">Add category</span>
+                            </a>
+                        </div>
+
+                        <hr>
+                        <div class="mt-5">
                             <button type="submit" class="btn btn-primarycus">Publish</button>
                         </div>
                     </form>
@@ -40,5 +47,35 @@
             </div>
         </div>
     </div>
-</body>
+
+
+      <!-- Modal เพิ่มข้อมูล-->
+    <div class="modal fade" id="exampleModalnewCate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add category</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'categories-add' %}" method="post" class="product-form">
+                        {% csrf_token %}
+                                        
+                            <div class="form-group row mb-4">
+                                <div class="mb-3 col-12">
+                                    {{ form2.name|as_crispy_field }}
+                                </div>
+
+                            </div>
+
+                            <div class="btn-footer mb-5">
+                                <button type="submit" name="submit_booking_insert" class="btn btn-primarycus me-3">บันทึก</button>
+                                <a href="{% url 'createpost' %}"  class="btn btn-secondary me-2">ยกเลิก</a>
+
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
