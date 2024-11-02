@@ -124,6 +124,7 @@ class CreateCommentView(View):
         user = request.user
         post = Post.objects.get(id=post_id)
         text = request.POST.get("text")
+        delete = request.POST.get("delete")
         if text:
             Comment.objects.create(
                 user = user,
@@ -131,7 +132,8 @@ class CreateCommentView(View):
                 description = text,
                 created_at = datetime.now()
             )
+        elif delete:
+            comment = Comment.objects.get(id = delete ,user = request.user)
+            comment.delete()
 
         return redirect('postdetail', post_id = post_id)
-    
-    
