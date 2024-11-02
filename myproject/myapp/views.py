@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.views import View
@@ -100,6 +100,33 @@ class PostdetailView(LoginRequiredMixin, View):
         comment_count = comment.count()
         context = {'post':post, 'comment': comment, 'comment_count': comment_count}
         return render(request, self.template_name, context)
+
+class EditPostView(View):
+    template_name = "edit_post.html"  # Create a new template for editing
+
+    def get(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(instance=post)
+        form2 = CategoriesForm(instance=post)
+        return render(request, self.template_name, {'form': form, 'post': post, 'form2':form2})
+
+    def post(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        form = PostForm(request.POST, instance=post)
+        form2 = CategoriesForm(request.POST, instance=post)
+        if form.is_valid() and form2.is_valid():
+            form.save()
+            form2.save()
+            return redirect('index') 
+        print('error')
+        return render(request, self.template_name, {'form': form, 'post': post})
+
+class DeletePostView(View):
+    def post(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        post.delete()
+        return redirect('index')
+    
 
 class CreateCommentView(LoginRequiredMixin, View):
     login_url = '/login/'
