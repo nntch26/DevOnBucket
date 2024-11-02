@@ -37,3 +37,110 @@
     display: inline-block;
     font-size: 14px;
 }
+
+.header {
+    background-color: white;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.5rem 1rem;
+}
+.dev-logo {
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.dev-logo:hover {
+    color: white;
+}
+.cover-image-btn {
+    background-color: white;
+    border: 2px dashed #dee2e6;
+    color: #6c757d;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+    margin: 1rem 0;
+}
+.cover-image-btn:hover {
+    background-color: #f8f9fa;
+}
+.editor-toolbar {
+    background-color: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.toolbar-btn {
+    background: none;
+    border: none;
+    color: #495057;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+}
+.toolbar-btn:hover {
+    background-color: #e9ecef;
+}
+.title-input {
+    font-size: 2.5rem;
+    border: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #2d3748;
+}
+.title-input::placeholder {
+    color: #4a5568;
+}
+.title-input:focus {
+    outline: none;
+}
+.tag-input {
+    border: none;
+    padding: 0.5rem 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #4a5568;
+}
+.tag-input:focus {
+    outline: none;
+}
+.content-area {
+    border: none;
+    width: 100%;
+    min-height: 300px;
+    resize: none;
+    padding: 1rem 0;
+}
+.content-area:focus {
+    outline: none;
+}
+.publish-btn {
+    background-color: #4F46E5;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+.publish-btn:hover {
+    background-color: #4338CA;
+}
+.tips-section {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+.tips-section h5 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+.tips-section ul {
+    padding-left: 1.2rem;
+}
+.tips-section li {
+    color: #4a5568;
+    margin-bottom: 1rem;
+}

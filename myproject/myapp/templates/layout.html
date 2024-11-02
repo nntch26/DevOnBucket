@@ -34,7 +34,7 @@
     {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
         <div class="container-fluid px-4">
-            <a href="">DevOnBucket</a>
+            <a href="{% url 'index' %}" class="dev-logo me-3">DEVOnBUCKET</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,7 +61,7 @@
                 </ul>
                 <div class="d-flex align-items-center">
                     <button class="btn btn-outline-dark me-2">Sign in</button>
-                    <button class="btn btn-primary">Write</button>
+                    <a href="{% url 'createpost' %}" class="dev-logo">Create Post </a>
                 </div>
             </div>
         </div>
