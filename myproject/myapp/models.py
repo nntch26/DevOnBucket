@@ -20,6 +20,6 @@ class Post(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE )
-    blog = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
