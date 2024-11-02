@@ -21,7 +21,7 @@ class indexView(View):
     template_name = "index.html"
 
     def get(self, request):
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-updated_at')
         categories = Category.objects.all()
         context = {'posts':posts, 'categories':categories}
         return render(request, self.template_name, context)
