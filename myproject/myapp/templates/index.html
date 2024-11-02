@@ -33,7 +33,7 @@
                             <span class="mx-2">·</span>
                             <span>{{ post.views }} views</span>  <!-- แสดงจำนวนการเข้าชม (คุณต้องเพิ่ม field นี้ใน model ถ้าต้องการ) -->
                             <span class="mx-2">·</span>
-                            <span>{{ post.comments.count }} comments</span>  <!-- แสดงจำนวนความคิดเห็น (คุณต้องมีฟิลด์นี้หรือวิธีการนับใน model ถ้าต้องการ) -->
+                            <span>{{ post.comment_set.count }} comments</span>  <!-- แสดงจำนวนความคิดเห็น -->
                         </div>
                     </article>
                     {% empty %}
@@ -46,15 +46,6 @@
             <div class="col-md-4">
                 <!-- Sidebar -->
                 <div class="sticky-top pt-4">
-                    <h4 class="mb-3">Staff Picks</h4>
-                    <div class="mb-4">
-                        <div class="d-flex align-items-center mb-2">
-                            <img src="/api/placeholder/24/24" class="rounded-circle me-2" alt="Author">
-                            <span class="small">Victor Garcia</span>
-                        </div>
-                        <h5 class="fs-6 fw-bold">A Tale of Two Transitions: Why America Can't Risk Another Tumultuous Presidency</h5>
-                    </div>
-
                     <h4 class="mb-3">Recommended topics</h4>
                     <div class="mb-4">
                         {% for cat in categories %}
