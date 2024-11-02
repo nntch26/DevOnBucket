@@ -44,7 +44,7 @@
 
         <!-- Comment input -->
         <div class="comment-box p-3 mb-3">
-            <form action="{% url 'create_comment' 1 %}" method="POST">
+            <form action="{% url 'create_comment' post.id %}" method="POST">
                 {% csrf_token %}
                 <textarea class="form-control mb-2" name="text" rows="3" placeholder="Type comment here... Markdown is supported!"></textarea>
                 <div class="text-end">

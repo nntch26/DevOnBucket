@@ -112,5 +112,5 @@ class CreateCommentView(View):
                 created_at = datetime.now()
             )
 
-        return redirect('index')
+        return redirect('postdetail', post_id = post_id)
     
