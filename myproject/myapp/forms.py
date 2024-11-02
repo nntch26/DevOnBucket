@@ -15,9 +15,20 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'categories']
+
+        
+        labels = {
+            'title': 'Post Title',
+            'content': 'Content'  
+        }
+
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'New post title here...'}),
-            'content': forms.Textarea(attrs={'placeholder': 'Write your post content here...'}),
+            'title': forms.TextInput(attrs={'placeholder': 'New post title here...', 
+                                            'class': 'title-input'}),
+
+            'content': forms.Textarea(attrs={'placeholder': 'Write your post content here...',
+                                             'class': 'content-area'}),
+
         }
 
 
