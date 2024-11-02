@@ -21,10 +21,11 @@
                     <article class="mb-4 pb-4 border-bottom">
                         <div class="d-flex align-items-center mb-2">
                             <!-- <img src="/api/placeholder/32/32" class="rounded-circle me-2" alt="Author"> -->
-                            <span>Topics {{ post.categories.all|join:", " }}</span> <!-- แสดงชื่อผู้เขียนและหมวดหมู่ -->
+                            <span style="color: rgb(122, 122, 122);"><strong>Topics</strong> {{ post.categories.all|join:", " }}</span> <!-- แสดงชื่อผู้เขียนและหมวดหมู่ -->
+                            
                         </div>
-                        <a href="{% url 'postdetail' post.id %}">
-                            <h2 class="fs-4 fw-bold mb-2">{{ post.title }}</h2>  <!-- แสดงชื่อโพสต์ -->
+                        <a href="{% url 'postdetail' post.id %}" class="text-decoration-none text-dark">
+                            <h1 class="fs-4 fw-bold mb-2 ">{{ post.title }}</h1>  <!-- แสดงชื่อโพสต์ -->
                         </a>
                         <p class="text-muted">{{ post.content|truncatewords:15 }}</p>  <!-- แสดงเนื้อหาโพสต์บางส่วน -->
                         <div class="article-meta d-flex align-items-center">

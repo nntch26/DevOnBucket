@@ -6,27 +6,87 @@
 
 
 :root {
-    --primary-green: #1a8917;
-    --hover-green: #156912;
+    --primary-color: #01F681;
+    --primary-hover: #00d870;
+    --primary-light: rgba(1, 246, 129, 0.1);
 }
-.nav-link:hover {
-    color: var(--primary-green) !important;
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #2E373E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
 }
+
+.comment-box {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.nav-pills .nav-link {
+    color: #6c757d;
+}
+
+.nav-pills .nav-link:hover:not(.active) {
+    background-color: var(--primary-light);
+    color: #000;
+}
+
 .btn-primary {
-    background-color: var(--primary-green) !important;
-    border-color: var(--primary-green) !important;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
 }
+
 .btn-primary:hover {
-    background-color: var(--hover-green) !important;
-    border-color: var(--hover-green) !important;
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: #000;
 }
-.btn-outline-dark:hover {
-    background-color: rgba(0, 0, 0, 0.05) !important;
-    color: black !important;
+
+.btn-outline-secondary {
+    border-color: var(--primary-color);
+    color: #000;
 }
+
+.btn-outline-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(1, 246, 129, 0.25);
+}
+
+.back-button {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.back-button:hover {
+    color: var(--primary-hover);
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+
 .article-meta {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #575e64;
 }
 .topic-tag {
     background-color: #f2f2f2;
@@ -126,16 +186,7 @@
 .content-area:focus {
     outline: none;
 }
-.publish-btn {
-    background-color: #4F46E5;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-}
-.publish-btn:hover {
-    background-color: #4338CA;
-}
+
 .tips-section {
     background-color: #f8f9fa;
     padding: 1.5rem;
@@ -154,15 +205,7 @@
 }
 
 
-.avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #e9ecef;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .comment-box {
     border: 1px solid #dee2e6;
     border-radius: 4px;
