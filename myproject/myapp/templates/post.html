@@ -10,11 +10,6 @@
         <a href="{% url 'index' %}" class="dev-logo me-3">DEVOnBUCKET</a>
         <h5 class="mb-0">Create Post</h5>
     </div>
-    <div>
-        <button class="btn btn-link text-dark">Edit</button>
-        <button class="btn btn-link text-dark">Preview</button>
-        <button class="btn btn-link text-dark"><i class="fas fa-times"></i></button>
-    </div>
 </header>
 {% endblock navbar %}
 
@@ -24,7 +19,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="bg-white p-4 rounded shadow-sm">
-                    <form method="post" id="postForm">
+                    <form method="post" id="postForm" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.title|as_crispy_field }}
 
