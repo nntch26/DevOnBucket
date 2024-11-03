@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="bg-white p-4 rounded shadow-sm">
-                    <form method="post" id="postForm">
+                    <form method="post" id="postForm" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.title|as_crispy_field }}
 
