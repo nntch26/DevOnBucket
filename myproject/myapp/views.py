@@ -22,8 +22,22 @@ class indexView(View):
     def get(self, request):
         posts = Post.objects.all().order_by('-updated_at')
         categories = Category.objects.all()
-        context = {'posts':posts, 'categories':categories}
+        context = {'posts': posts, 'categories': categories}
         return render(request, self.template_name, context)
+
+    def post(self, request):
+        cat_name = request.POST.get('filter-cat')
+        
+        # กรองโพสต์ตามหมวดหมู่ที่เลือก
+        if cat_name:
+            posts = Post.objects.filter(categories__name=cat_name).order_by('-updated_at')
+        else:
+            posts = Post.objects.all().order_by('-updated_at')
+        
+        categories = Category.objects.all()
+        context = {'posts': posts, 'categories': categories, 'selected_category': cat_name}
+        return render(request, self.template_name, context)
+
     
 # login & register
 class LoginView(View):

@@ -21,7 +21,7 @@
                     <article class="mb-4 pb-4 border-bottom">
                         <div class="d-flex align-items-center mb-2">
                             <!-- <img src="/api/placeholder/32/32" class="rounded-circle me-2" alt="Author"> -->
-                            <span style="color: rgb(122, 122, 122);"><strong>Topics</strong> {{ post.categories.all|join:", " }}</span> <!-- แสดงชื่อผู้เขียนและหมวดหมู่ -->
+                            <span style="color: rgb(122, 122, 122);"><strong>Topics</strong> {{ post.categories.all|join:", " }}</span>
                             
                         </div>
                         <a href="{% url 'postdetail' post.id %}" class="titlecus">
@@ -31,7 +31,7 @@
                         <div class="article-meta d-flex align-items-center">
                             <span>{{ post.created_at|date:"M d, Y \a\t H:i" }}</span><!-- แสดงวันที่สร้างโพสต์ -->
                             <span class="mx-2">·</span>
-                            <span>{{ post.views }} views</span>  <!-- แสดงจำนวนการเข้าชม (คุณต้องเพิ่ม field นี้ใน model ถ้าต้องการ) -->
+                            <span>{{ post.views }} views</span>
                             <span class="mx-2">·</span>
                             <span>{{ post.comment_set.count }} comments</span>  <!-- แสดงจำนวนความคิดเห็น -->
                         </div>
@@ -48,9 +48,14 @@
                 <div class="sticky-top pt-4">
                     <h4 class="mb-3">Recommended topics</h4>
                     <div class="mb-4">
-                        {% for cat in categories %}
-                            <a href="#" class="topic-tag text-decoration-none text-dark">{{ cat.name }}</a>
-                        {% endfor %}
+                        <form method="post" action="{% url 'index' %}">
+                            {% csrf_token %}
+                            {% for cat in categories %}
+                                <button type="submit" name="filter-cat" value="{{ cat.name }}" class="topic-tag btn btn-link text-decoration-none text-dark {% if cat.name == selected_category %}active{% endif %}">
+                                    {{ cat.name }}
+                                </button>
+                            {% endfor %}
+                        </form>
                     </div>
                 </div>
             </div>
