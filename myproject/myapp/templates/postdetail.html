@@ -34,10 +34,10 @@
                     </div>
                     {% if request.user == post.author %}
                         <div>
-                            <a href="{% url 'edit_post' post.pk %}" class="btn btn-link text-dark">Edit</a>
+                            <a href="{% url 'edit_post' post.pk %}" class="btn btn-link text-primary fw-bold text-decoration-none">Edit</a>
                             <form action="{% url 'delete_post' post.pk %}" method="post" style="display: inline;">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-link text-dark">Delete</button>
+                                <button type="submit" class="btn btn-link text-danger fw-bold text-decoration-none">Delete</button>
                             </form>
                         </div>
                     {% endif %}
