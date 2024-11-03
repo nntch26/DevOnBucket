@@ -23,7 +23,7 @@
                     <article class="mb-4 pb-4 border-bottom mt-5">
                         <div class="d-flex align-items-center mb-2">
                             <!-- <img src="/api/placeholder/32/32" class="rounded-circle me-2" alt="Author"> -->
-                            <span style="color: rgb(122, 122, 122);"><strong>Topics</strong> {{ post.categories.all|join:", " }}</span>
+                            <span style="color: rgb(122, 122, 122);"><strong>Topics</strong> #{{ post.categories.all|join:", #" }}</span>
                             
                         </div>
                         <a href="{% url 'postdetail' post.id %}" class="titlecus">
