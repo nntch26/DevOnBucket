@@ -82,11 +82,11 @@ class CreatepostView(LoginRequiredMixin, View):
     def post(self, request):
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)  # สร้างโพสต์แต่ยังไม่บันทึกลงฐานข้อมูล
-            post.author = request.user       # ตั้งค่า author ให้เป็นผู้ใช้ที่ล็อกอินอยู่
+            post = form.save(commit=False)
+            post.author = request.user      
             post.save()
             form.save()
-            return redirect('index')  # เปลี่ยนไปยัง URL ที่ต้องการ
+            return redirect('index') 
         return render(request, self.template_name, {'form': form})
 
 class CategoriesAddView(LoginRequiredMixin, View):
@@ -95,7 +95,7 @@ class CategoriesAddView(LoginRequiredMixin, View):
 
     def post(self, request):
         form = CategoriesForm(request.POST)
-        redirect_from = request.POST.get('redirect_from')  # ตรวจสอบจาก POST
+        redirect_from = request.POST.get('redirect_from')
 
         if form.is_valid():
             form.save()
@@ -114,9 +114,8 @@ class CategoriesAddView(LoginRequiredMixin, View):
         }
         return render(request, self.template_name, context)
 
-class PostdetailView(LoginRequiredMixin, View):
+class PostdetailView(View):
     template_name = "postdetail.html"
-    login_url = '/login/'
     def get(self, request, post_id):
         post = Post.objects.get(pk=post_id)
         comment = Comment.objects.filter(post_id=post_id)
@@ -124,8 +123,9 @@ class PostdetailView(LoginRequiredMixin, View):
         context = {'post':post, 'comment': comment, 'comment_count': comment_count}
         return render(request, self.template_name, context)
 
-class EditPostView(View):
+class EditPostView(LoginRequiredMixin, View):
     template_name = "edit_post.html"
+    login_url = "/login/"
 
     def get(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
@@ -145,7 +145,8 @@ class EditPostView(View):
 
         return render(request, self.template_name, {'form': form, 'post': post})
 
-class DeletePostView(View):
+class DeletePostView(LoginRequiredMixin, View):
+    login_url = "/login/"
     def post(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
         post.delete()

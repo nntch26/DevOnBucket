@@ -22,22 +22,21 @@
                 {% for post in posts %}
                     <article class="mb-4 pb-4 border-bottom mt-5">
                         <div class="d-flex align-items-center mb-2">
-                            <!-- <img src="/api/placeholder/32/32" class="rounded-circle me-2" alt="Author"> -->
                             <span style="color: rgb(122, 122, 122);"><strong>Topics</strong> #{{ post.categories.all|join:", #" }}</span>
                             
                         </div>
                         <a href="{% url 'postdetail' post.id %}" class="titlecus">
-                            <h1 class="fs-4 fw-bold mb-2 ">{{ post.title }}</h1>  <!-- แสดงชื่อโพสต์ -->
+                            <h1 class="fs-4 fw-bold mb-2 ">{{ post.title }}</h1> 
                         </a>
-                        <p class="text-muted">{{ post.content|truncatewords:15 }}</p>  <!-- แสดงเนื้อหาโพสต์บางส่วน -->
+                        <p class="text-muted">{{ post.content|truncatewords:15 }}</p> 
                         <div class="article-meta d-flex align-items-center">
-                            <span>{{ post.created_at|date:"M d, Y \a\t H:i" }}</span><!-- แสดงวันที่สร้างโพสต์ -->
+                            <span>{{ post.created_at|date:"M d, Y \a\t H:i" }}</span>
                             <span class="mx-2">·</span>
-                            <span>{{ post.comment_set.count }} comments</span>  <!-- แสดงจำนวนความคิดเห็น -->
+                            <span>{{ post.comment_set.count }} comments</span>  
                         </div>
                     </article>
                     {% empty %}
-                    <p>No posts available.</p>  <!-- แสดงข้อความถ้าไม่มีโพสต์ -->
+                    <p>No posts available.</p> 
                 {% endfor %}
 
                 
