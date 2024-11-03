@@ -1,0 +1,228 @@
+
+*{
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+:root {
+    --primary-color: #01F681;
+    --primary-hover: #00d870;
+    --primary-light: rgba(1, 246, 129, 0.1);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #2E373E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+}
+
+.comment-box {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.nav-pills .nav-link {
+    color: #6c757d;
+}
+
+.nav-pills .nav-link:hover:not(.active) {
+    background-color: var(--primary-light);
+    color: #000;
+}
+
+.btn-primarycus {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
+}
+
+.btn-primarycus:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: #000;
+}
+
+.btn-outline-secondary {
+    border-color: var(--primary-color);
+    color: #000;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(1, 246, 129, 0.25);
+}
+
+.back-button {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.back-button:hover {
+    color: var(--primary-hover);
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.titlecus{
+    color: #2d3748;
+    text-decoration: none;
+}
+
+.titlecus:hover{
+    color: var(--primary-hover);
+}
+
+
+.article-meta {
+    font-size: 0.9rem;
+    color: #575e64;
+}
+.topic-tag {
+    background-color: #f2f2f2;
+    border-radius: 100px;
+    padding: 8px 16px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.header {
+    background-color: white;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.5rem 1rem;
+}
+
+.text-logo {
+    color: #2E373E;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.dev-logo {
+    background-color: #2E373E;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.dev-logo:hover {
+    color: white;
+}
+.cover-image-btn {
+    background-color: white;
+    border: 2px dashed #dee2e6;
+    color: #6c757d;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+    margin: 1rem 0;
+}
+.cover-image-btn:hover {
+    background-color: #f8f9fa;
+}
+.editor-toolbar {
+    background-color: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.toolbar-btn {
+    background: none;
+    border: none;
+    color: #495057;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+}
+.toolbar-btn:hover {
+    background-color: #e9ecef;
+}
+.title-input {
+    font-size: 2.5rem;
+    border: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #2d3748;
+}
+.title-input::placeholder {
+    color: #4a5568;
+}
+.title-input:focus {
+    outline: none;
+}
+.tag-input {
+    border: none;
+    padding: 0.5rem 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #4a5568;
+}
+.tag-input:focus {
+    outline: none;
+}
+.content-area {
+    border: none;
+    width: 100%;
+    min-height: 300px;
+    resize: none;
+    padding: 1rem 0;
+}
+.content-area:focus {
+    outline: none;
+}
+
+.tips-section {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+.tips-section h5 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+.tips-section ul {
+    padding-left: 1.2rem;
+}
+.tips-section li {
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+
+
+.comment-box {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.nav-link {
+    color: #6c757d;
+}
+.nav-link.active {
+    font-weight: bold;
+}

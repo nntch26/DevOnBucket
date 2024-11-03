@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-y1s=g&po*pc-1=0(cdar0#t(iv344#mlr3evfe#dzj4+5p(e9=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myapp.elasticbeanstalk.com']
 
 
 # Application definition
@@ -82,13 +82,24 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "blogs_db",
+#         "USER": "postgres",
+#         "PASSWORD": "1234",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "blogs_db",
         "USER": "postgres",
-        "PASSWORD": "1234",
-        "HOST": "localhost",
+        "PASSWORD": "e6J5vqefbdCMiU8",
+        "HOST": "database-1.ctlz1iab3j2z.us-east-1.rds.amazonaws.com",
         "PORT": "5432",
     }
 }
@@ -155,8 +166,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_DIRS = [
