@@ -1,5 +1,4 @@
-# DevOnBucket Community Website 
-## เว็บไซต์ชุมชนสำหรับนักพัฒนาซอฟต์แวร์ 
+# DevOnBucket Community Website เว็บไซต์ชุมชนสำหรับนักพัฒนาซอฟต์แวร์ 
 วิชาเทคโนโลยีกลุ่มเมฆ (Cloud Computing) 1/2024 แขนงวิชา Software Development
 
 # บทคัดย่อ รายละเอียดโครงงาน
